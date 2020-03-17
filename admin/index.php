@@ -4,7 +4,6 @@ include "includes/db.php";
 
 ?>
 <div id="wrapper">
-
     <!-- Navigation -->
     <?php
     include "includes/navbar.php";
