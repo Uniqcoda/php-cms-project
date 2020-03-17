@@ -59,7 +59,8 @@ include "includes/db.php";
                 </tr>
               </thead>
               <tbody>
-                <?php
+                <?php 
+                // get all categories
                 $query = "SELECT * FROM categories";
                 $result = mysqli_query($connection, $query);
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -68,7 +69,17 @@ include "includes/db.php";
                   echo "<tr>
                 <td>$cat_id</td>
                 <td>$cat_title</td>
+                <td><a href='categories.php?delete={$cat_id}'>Delete</a></td>
               </tr>";
+                }
+                ?>
+                <?php 
+                // delete categories
+                if (isset($_GET["delete"])) {
+                  $cat_id = $_GET["delete"];
+                  $query = "DELETE FROM categories WHERE cat_id = {$cat_id} ";
+                  $result = mysqli_query($connection, $query);
+                  header("Location: categories.php");
                 }
                 ?>
               </tbody>
