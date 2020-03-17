@@ -1,5 +1,5 @@
 <?php
-include "includes/header.php";
+include "includes/admin_header.php";
 include "includes/db.php";
 
 ?>
@@ -7,7 +7,7 @@ include "includes/db.php";
 
   <!-- Navigation -->
   <?php
-  include "includes/navbar.php";
+  include "includes/admin_navbar.php";
 
   ?>
   <div id="page-wrapper">
@@ -22,6 +22,21 @@ include "includes/db.php";
             <small>Author</small>
           </h1>
           <div class="col-xs-6">
+            <?php
+            if (isset($_POST["submit"])) {
+              // echo "Hello";
+              $cat_title = $_POST["cat_title"];
+              if ($cat_title == "" || empty($cat_title)) {
+                echo "<small>Please fill this field</small>";
+              } else {
+                $query = "INSERT INTO categories(cat_title) VALUE('{$cat_title}') ";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                  die("QUERY FAILED" . mysqli_error($connection));
+                }
+              }
+            }
+            ?>
             <form action="" method="post">
               <div class="form-group">
                 <label for="cat_title"> Add Category</label>
@@ -32,6 +47,9 @@ include "includes/db.php";
               </div>
             </form>
           </div>
+
+
+
           <div class="col-xs-6">
             <table class="table table-bordered table-hover">
               <thead>
@@ -41,14 +59,18 @@ include "includes/db.php";
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>OOP</td>
-                  <td>FP</td>
-                </tr>
-                <tr>
-                  <td>OOP</td>
-                  <td>FP</td>
-                </tr>
+                <?php
+                $query = "SELECT * FROM categories";
+                $result = mysqli_query($connection, $query);
+                while ($row = mysqli_fetch_assoc($result)) {
+                  $cat_id = $row['cat_id'];
+                  $cat_title = $row['cat_title'];
+                  echo "<tr>
+                <td>$cat_id</td>
+                <td>$cat_title</td>
+              </tr>";
+                }
+                ?>
               </tbody>
             </table>
           </div>
@@ -66,5 +88,5 @@ include "includes/db.php";
 <!-- /#wrapper -->
 
 <?php
-include "includes/footer.php";
+include "includes/admin_footer.php";
 ?>
