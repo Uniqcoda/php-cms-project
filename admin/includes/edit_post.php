@@ -113,6 +113,17 @@ include "../functions.php";
 
     move_uploaded_file($post_image_temp, "../images/$post_image");
 
+    // fix bug: submitting empty image value
+    if (empty($post_image)) {
+      $query = "SELECT * FROM posts WHERE post_id = {$post_id} ";
+
+      $result = mysqli_query($connection, $query);
+      confirmQuery($result);
+      while ($row = mysqli_fetch_assoc($result)) {
+        $post_image = $row['post_image'];
+      }
+    }
+
     $query = "UPDATE posts SET ";
     $query .= "post_title = '{$post_title}', ";
     $query .= "post_category_id = '{$post_category_id}', ";
@@ -131,7 +142,7 @@ include "../functions.php";
   ?>
 
   <div class="form-group">
-    <input class="btn btn-primary" type="submit" name="update_post" value="Publish Post">
+    <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">
   </div>
 
 
