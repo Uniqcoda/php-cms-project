@@ -36,7 +36,7 @@ include "../functions.php";
       </div>
 
       <div class="form-group">
-        <label for="post_category_id">Post Category Id</label><br>
+        <label for="post_category_id">Post Category</label><br>
         <select name="post_category_id" id="post_category">
           <?php
           $query = "SELECT * FROM categories ";
