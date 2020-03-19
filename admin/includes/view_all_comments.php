@@ -9,7 +9,7 @@
       <th>In Response To</th>
       <th>Date</th>
       <th>Approve</th>
-      <th>Disapprove</th>
+      <th>Unapprove</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -23,14 +23,15 @@
         $comment_id = $row['comment_id'];
         $comment_post_id = $row['comment_post_id'];
         $comment_author = $row['comment_author'];
-        $comment_content = $row['comment_content'];
+        $comment_content = substr($row['comment_content'], 0, 100);
         $comment_email = $row['comment_email'];
         $comment_status = $row['comment_status'];
         $comment_date = $row['comment_date'];
+
         echo "<tr>";
         echo "<td>$comment_id</td>";
         echo "<td>$comment_author</td>";
-        echo "<td>$comment_content</td>";
+        echo "<td>$comment_content...</td>";
         echo "<td>$comment_email</td>";
         echo "<td>$comment_status</td>";
 
@@ -47,7 +48,7 @@
 
         echo "<td>$comment_date</td>";
         echo "<td><a href='posts.php?source=edit_post&p_id={$comment_id}'>Approve</a></td>";
-        echo "<td><a href='posts.php?delete={$comment_id}'>Disapprove</a></td>";
+        echo "<td><a href='posts.php?delete={$comment_id}'>Unapprove</a></td>";
         echo "<td><a href='posts.php?delete={$comment_id}'>Delete</a></td>";
         echo "</tr>";
       } ?>
