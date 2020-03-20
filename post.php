@@ -65,12 +65,17 @@ include "includes/navbar.php";
                 $comment_email = $_POST["comment_email"];
                 $comment_content = $_POST["comment_content"];
 
-
                 $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date ) ";
                 $query .= "VALUE ($comment_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now()) ";
 
+                $comment_count_query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+                $comment_count_query .= "WHERE post_id = $comment_post_id ";
                 $result = mysqli_query($connection, $query);
+                $result_comment_count_query = mysqli_query($connection, $comment_count_query);
                 confirmQuery($result);
+                if (!$result || !$result_comment_count_query) {
+                    die("QUERY FAILED " . mysqli_error($connection));
+                }
             }
             ?>
 
