@@ -17,7 +17,7 @@
     <tr>
       <?php
       global $connection;
-      $query = "SELECT * FROM comments";
+      $query = "SELECT * FROM comments ORDER BY comment_date DESC ";
       $result = mysqli_query($connection, $query);
       while ($row = mysqli_fetch_assoc($result)) {
         $comment_id = $row['comment_id'];

@@ -16,7 +16,7 @@
     <tr>
       <?php
       global $connection;
-      $query = "SELECT * FROM posts";
+      $query = "SELECT * FROM posts ORDER BY post_date DESC ";
       $result = mysqli_query($connection, $query);
       while ($row = mysqli_fetch_assoc($result)) {
         $post_id = $row['post_id'];
