@@ -21,7 +21,8 @@ include "includes/navbar.php";
       if (isset($_GET["cat_id"])) {
         $cat_id = $_GET["cat_id"];
       }
-      $query = "SELECT * FROM posts WHERE post_category_id = $cat_id ORDER BY post_date DESC";
+      // display only published posts
+      $query = "SELECT * FROM posts WHERE (post_category_id = $cat_id AND post_status = 'published') ORDER BY post_date DESC";
       $all_posts = mysqli_query($connection, $query);
       while ($row = mysqli_fetch_assoc($all_posts)) {
         $post_id = $row['post_id'];

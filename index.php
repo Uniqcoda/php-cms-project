@@ -18,7 +18,8 @@ include "includes/navbar.php";
         <!-- Blog Entries Column -->
         <div class="col-md-8">
             <?php
-            $query = "SELECT * FROM posts ORDER BY post_date DESC ";
+            // display only published posts
+            $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC ";
             $all_posts = mysqli_query($connection, $query);
             while ($row = mysqli_fetch_assoc($all_posts)) {
                 $post_id = $row['post_id'];
