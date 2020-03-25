@@ -7,8 +7,8 @@ if (isset($_POST["add_user"])) {
   $user_firstname = $_POST['user_firstname'];
   $user_lastname = $_POST['user_lastname'];
   $user_email = $_POST['user_email'];
-  $user_image = $_FILES['image']['name'];
-  $user_image_temp = $_FILES['image']['tmp_name'];
+  $user_image = $_FILES['user_image']['name'];
+  $user_image_temp = $_FILES['user_image']['tmp_name'];
   $user_role = $_POST['user_role'];
 
   move_uploaded_file($user_image_temp, "../images/$user_image");
@@ -35,7 +35,7 @@ if (isset($_POST["add_user"])) {
 
   <div class="form-group">
     <label for="user_email">Email</label>
-    <input type="text" class="form-control" name="user_email">
+    <input type="email" class="form-control" name="user_email">
   </div>
 
   <div class="form-group">

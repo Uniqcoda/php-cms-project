@@ -64,23 +64,11 @@ include "../functions.php";
         <label for="post_status">Post Status</label>
         <input type="text" class="form-control" name="post_status" value="<?php if (isset($post_status)) echo $post_status ?>">
       </div>
-      <!-- <div class="form-group">
-        <select name="post_status" id="">
-          <option value="draft">Post Status</option>
-          <option value="published">Published</option>
-          <option value="draft">Draft</option>
-        </select>
-      </div> -->
 
       <div class="form-group">
         <label for="image">Post Image</label><br>
         <img width="100" src="../images/<?php echo $post_image ?>" alt="">
         <input type="file" name="image">
-
-        <!-- <input type="file" name="image" value="
-        <?php
-        // if (isset($post_image)) echo $post_image 
-        ?>"> -->
       </div>
 
       <div class="form-group">
