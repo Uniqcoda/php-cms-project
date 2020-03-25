@@ -54,23 +54,13 @@ include "includes/navbar.php";
 
           <hr>
           <p><?php echo $post_content; ?>...</p>
-          <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+          <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
           <hr>
       <?php
         }
       }
       ?>
-
-      <!-- Pager -->
-      <!-- <ul class="pager">
-                <li class="previous">
-                    <a href="#">&larr; Older</a>
-                </li>
-                <li class="next">
-                    <a href="#">Newer &rarr;</a>
-                </li>
-            </ul> -->
 
     </div>
 
