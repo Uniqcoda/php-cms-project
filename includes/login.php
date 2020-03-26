@@ -25,7 +25,7 @@ if (isset($_POST["login"])) {
 
   if ($password !== $db_user_password) {
     header("Location: ../index.php");
-  } else if ($password == $db_user_password) {
+  } else {
     $_SESSION["username"] = $db_username;
     $_SESSION["firstname"] = $db_user_firstname;
     $_SESSION["lastname"] = $db_user_lastname;
@@ -34,8 +34,4 @@ if (isset($_POST["login"])) {
     header("Location: ../admin");
   }
 }
-
-
-
-
 ?>
