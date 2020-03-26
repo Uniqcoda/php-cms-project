@@ -80,8 +80,8 @@ if (isset($_POST["edit_user"])) {
       <div class="row">
         <div class="col-lg-12">
           <h1 class="page-header">
-            Welcome to Admin
-            <small>Author</small>
+            Welcome
+            <small><?php echo ucfirst($_SESSION['username']) ?></small>
           </h1>
           <h3>Edit Profile</h3>
           <form action="" method="post" enctype="multipart/form-data">

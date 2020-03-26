@@ -17,10 +17,11 @@ include "includes/db.php";
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome to Admin
+                        Welcome
                         <small><?php echo ucfirst($_SESSION['username']) ?></small>
                     </h1>
                 </div>
+                <h4>Please select an item from the menu on the left-hand side.</h4>
             </div>
             <!-- /.row -->
 

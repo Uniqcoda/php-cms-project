@@ -18,8 +18,8 @@ include "includes/db.php";
       <div class="row">
         <div class="col-lg-12">
           <h1 class="page-header">
-            Welcome to Admin
-            <small>Author</small>
+            Welcome
+            <small><?php echo ucfirst($_SESSION['username']) ?></small>
           </h1>
 
 
@@ -52,6 +52,8 @@ include "includes/db.php";
                 <tr>
                   <th>Id</th>
                   <th>Category Title</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
