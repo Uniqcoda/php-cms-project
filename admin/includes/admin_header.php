@@ -1,5 +1,6 @@
 <!-- output buffering -->
 <?php ob_start() ?>
+<?php session_start() ?>
 <?php include "../includes/db.php";
 include "functions.php";
 
