@@ -59,7 +59,7 @@
 
   <!-- Side Widget Well -->
   <?php
-  include "includes/widget.php";
+  // include "includes/widget.php";
   ?>
 
 </div>

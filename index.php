@@ -17,6 +17,12 @@ include "includes/navbar.php";
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
+
+            <h1 class="page-header">
+                Recent Blog Posts
+                <small>Secondary Text</small>
+            </h1>
+
             <?php
             // display only published posts
             $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC ";
@@ -29,12 +35,6 @@ include "includes/navbar.php";
                 $post_image = $row['post_image'];
                 $post_content = substr($row['post_content'], 0, 100);
             ?>
-
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-
                 <!-- First Blog Post -->
                 <h2>
                     <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
