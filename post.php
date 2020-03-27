@@ -16,6 +16,12 @@ include "includes/navbar.php";
 
     <div class="row">
 
+        <!-- Blog Sidebar Widgets Column -->
+        <?php
+        include "includes/sidebar.php";
+        ?>
+
+
         <!-- Blog Entries Column -->
         <div class="col-md-8">
             <?php
@@ -133,11 +139,6 @@ include "includes/navbar.php";
             }
             ?>
         </div>
-
-        <!-- Blog Sidebar Widgets Column -->
-        <?php
-        include "includes/sidebar.php";
-        ?>
 
     </div>
     <!-- /.row -->
