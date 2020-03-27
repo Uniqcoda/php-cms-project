@@ -32,7 +32,6 @@ if (isset($_SESSION["username"])) {
 if (isset($_POST["edit_user"])) {
 
   $user_password = $_POST['user_password'];
-  $username = $_POST['username'];
   $user_firstname = $_POST['user_firstname'];
   $user_lastname = $_POST['user_lastname'];
   $user_email = $_POST['user_email'];
@@ -53,7 +52,6 @@ if (isset($_POST["edit_user"])) {
   }
 
   $update_query = "UPDATE users SET ";
-  $update_query .= "username = '{$username}', ";
   $update_query .= "user_password = '{$user_password}', ";
   $update_query .= "user_firstname = '{$user_firstname}', ";
   $update_query .= "user_lastname = '{$user_lastname}', ";
@@ -81,7 +79,7 @@ if (isset($_POST["edit_user"])) {
         <div class="col-lg-12">
           <h1 class="page-header">
             Welcome
-            <small><?php echo ucfirst($_SESSION['username']) ?></small>
+            <small><?php echo ucfirst($_SESSION['firstname']) ?></small>
           </h1>
           <h3>Edit Profile</h3>
           <form action="" method="post" enctype="multipart/form-data">
@@ -99,11 +97,6 @@ if (isset($_POST["edit_user"])) {
             <div class="form-group">
               <label for="user_email">Email</label>
               <input type="email" class="form-control" name="user_email" value="<?php echo $user_email ?>">
-            </div>
-
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" class="form-control" name="username" value="<?php echo $username ?>">
             </div>
 
             <div class="form-group">
