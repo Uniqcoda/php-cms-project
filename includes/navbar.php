@@ -8,13 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">CMS Front</a>
+      <a class="navbar-brand" href="index.php"> Blissful CMS </a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav justify-content-end">
         <?php
-        $query = "SELECT * FROM categories";
+        $query = "SELECT * FROM categories
+        ";
+        // to limit the number of values returned
+        $query .= "LIMIT 3 ";
         $all_categories = mysqli_query($connection, $query);
         while ($row = mysqli_fetch_assoc($all_categories)) {
           $cat_title = $row['cat_title'];
