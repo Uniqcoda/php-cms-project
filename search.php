@@ -17,7 +17,7 @@ include "includes/navbar.php";
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-        <h1 class="page-header">
+            <h1 class="page-header">
                 Recent Blog Posts
                 <small>Secondary Text</small>
             </h1>
@@ -27,7 +27,8 @@ include "includes/navbar.php";
             if (isset($_POST["submit"])) {
 
                 $search = $_POST["search"];
-                $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+                $query = "SELECT * FROM posts WHERE (post_status = 'published' AND post_tags LIKE '%$search%') ORDER BY post_date DESC";
+
                 $search_result = mysqli_query($connection, $query);
                 if (!$search_result) {
                     die("QUERY FAILED" . mysqli_error($connection));
