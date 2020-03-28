@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +26,15 @@
           echo "<li><a href='#'>$cat_title</a></li>";
         }
         ?>
-        <li><a href='admin'>Admin</a></li>
+        <?php
+
+        if (isset($_SESSION["user_role"])) {
+          if ($_SESSION["user_role"] == 'admin') {
+            echo "<li><a href='admin'>Admin</a></li>";
+          }
+        }
+        ?>
+        <!-- <li><a href='admin'>Admin</a></li> -->
       </ul>
     </div>
     <!-- /.navbar-collapse -->

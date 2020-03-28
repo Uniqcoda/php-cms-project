@@ -2,6 +2,8 @@
 include "includes/admin_header.php";
 include "includes/db.php";
 ?>
+<?php session_start() ?>
+
 
 <?php
 // get user's data
