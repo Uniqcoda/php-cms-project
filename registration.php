@@ -17,7 +17,7 @@ include "includes/navbar.php";
 <!-- Page Content -->
 <div class="container">
 
-  <section id="login">
+  <section>
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
@@ -27,27 +27,27 @@ include "includes/navbar.php";
             <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
               <div class="form-group">
                 <label for="firstname" class="sr-only">Firstname</label>
-                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter Firstname">
+                <input type="text" name="firstname" class="form-control" placeholder="Enter Firstname">
               </div>
               <div class="form-group">
                 <label for="lastname" class="sr-only">Lastname</label>
-                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter Lastname">
+                <input type="text" name="lastname" class="form-control" placeholder="Enter Lastname">
               </div>
               <div class="form-group">
                 <label for="username" class="sr-only">Username</label>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username">
+                <input type="text" name="username" class="form-control" placeholder="Enter Username">
               </div>
               <div class="form-group">
                 <label for="email" class="sr-only">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                <input type="email" name="email" class="form-control" placeholder="somebody@example.com">
               </div>
               <div class="form-group">
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" name="password" id="key" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
               <div class="form-group">
                 <label for="password2" class="sr-only">Retype Password</label>
-                <input type="password" name="password2" id="key" class="form-control" placeholder="Password">
+                <input type="password" name="password2" class="form-control" placeholder="Password">
               </div>
 
               <?php
@@ -75,7 +75,7 @@ include "includes/navbar.php";
                   $user_role = 'subscriber';
 
                   $query = "INSERT INTO users(username, user_password, user_firstname, user_lastname, user_email, user_image, user_role) ";
-                  $query .= "VALUES('{$username}','{$hashed_password}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_image}','{$user_role}') ";
+                  $query .= "VALUES('{$username}','{$hashed_password}','{$user_firstname}','{$user_lastname}','{$email}','{$user_image}','{$user_role}') ";
 
                   $result = mysqli_query($connection, $query);
                   if (!$result) {
@@ -86,14 +86,14 @@ include "includes/navbar.php";
                     $_SESSION["lastname"] = $user_lastname;
                     $_SESSION["user_role"] = $user_role;
 
-                    header("Location: index.php");
+                    header("Location: ./index.php");
                   }
                 }
               }
 
               ?>
 
-              <input type="submit" name="submit" id="btn-login" class="btn btn-primary btn-lg btn-block" value="Register">
+              <input type="submit" name="submit" class="btn btn-primary btn-lg btn-block" value="Register">
             </form>
 
           </div>
