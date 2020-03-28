@@ -1,3 +1,4 @@
+<h3>Posts</h3>
 <table class="table table-hover table-bordered">
   <thead>
     <tr>

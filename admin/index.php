@@ -21,7 +21,7 @@ include "includes/db.php";
                         <small><?php echo ucfirst($_SESSION['firstname']) ?></small>
                     </h1>
                 </div>
-                <h4>Please select an item from the menu on the left-hand side.</h4>
+                <h4>Please select an item from the menu on the left.</h4>
             </div>
             <!-- /.row -->
 

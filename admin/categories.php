@@ -21,9 +21,7 @@ include "includes/db.php";
             Welcome
             <small><?php echo ucfirst($_SESSION['firstname']) ?></small>
           </h1>
-
-
-
+          <h3>Categories</h3>
 
           <div class="col-xs-6">
             <?php addCategory() ?>

@@ -21,6 +21,7 @@ include "includes/db.php";
             Welcome
             <small><?php echo ucfirst($_SESSION['firstname']) ?></small>
           </h1>
+
           <?php
           if (isset($_GET['source'])) {
             $source = $_GET['source'];

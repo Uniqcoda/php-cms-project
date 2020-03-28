@@ -108,7 +108,7 @@ include "includes/navbar.php";
 
               <div class="form-group">
                 <label for="user_image">User Image</label><br>
-                <img width="100" src="images/<?php echo $user_image ?>" alt="">
+                <img style="border-radius: 50%" height="100" width="100" src="images/<?php echo $user_image ?>" alt="">
                 <p></p>
                 <input type="file" name="user_image">
               </div>
