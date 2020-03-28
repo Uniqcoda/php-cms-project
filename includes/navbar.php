@@ -16,22 +16,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <?php
-        $query = "SELECT * FROM categories
-        ";
-        // to limit the number of values returned
-        $query .= "LIMIT 3 ";
-        $all_categories = mysqli_query($connection, $query);
-        while ($row = mysqli_fetch_assoc($all_categories)) {
-          $cat_title = $row['cat_title'];
-          echo "<li><a href='#'>$cat_title</a></li>";
-        }
-        ?>
-        <?php
 
         if (isset($_SESSION["user_role"])) {
+          echo "<li><a href='profile.php'>Profile</a></li>";
           if ($_SESSION["user_role"] == 'admin') {
             echo "<li><a href='admin'>Admin</a></li>";
           }
+          echo "<li><a href='includes/logout.php'>Log Out</a></li>";
         } else {
           echo "<li><a href='login.php'>Login</a></li>";
           echo "<li><a href='registration.php'>Register</a></li>";

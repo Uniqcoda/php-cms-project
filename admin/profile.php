@@ -38,7 +38,6 @@ if (isset($_POST["edit_user"])) {
   $user_email = $_POST['user_email'];
   $user_image = $_FILES['user_image']['name'];
   $user_image_temp = $_FILES['user_image']['tmp_name'];
-  $user_role = $_POST['user_role'];
 
   move_uploaded_file($user_image_temp, "../images/$user_image");
 
@@ -57,7 +56,6 @@ if (isset($_POST["edit_user"])) {
   $update_query .= "user_lastname = '{$user_lastname}', ";
   $update_query .= "user_email = '{$user_email}', ";
   $update_query .= "user_image = '{$user_image}', ";
-  $update_query .= "user_role = '{$user_role}' ";
   $update_query .= "WHERE username = '{$username}' ";
 
   $update_result = mysqli_query($connection, $update_query);
@@ -103,19 +101,6 @@ if (isset($_POST["edit_user"])) {
               <label for="user_image">User Image</label><br>
               <img width="100" src="../images/<?php echo $user_image ?>" alt="">
               <input type="file" name="user_image">
-            </div>
-
-            <div class="form-group">
-              <label for="user_role">User Role</label>
-              <select name="user_role" id="">
-                <option value="<?php echo $user_role ?>"><?php echo ucfirst($user_role) ?></option>
-                <?php
-                if ($user_role == "admin") {
-                  echo "<option value='subscriber'>Subscriber</option>";
-                } else {
-                  echo "<option value='admin'>Admin</option>";
-                } ?>
-              </select>
             </div>
 
             <div class="form-group">
