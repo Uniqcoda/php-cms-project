@@ -30,6 +30,7 @@ if (isset($_POST["submit"])) {
       $db_hashed_password = $row["user_password"];
       $db_user_firstname = $row["user_firstname"];
       $db_user_lastname = $row["user_lastname"];
+      $db_user_email = $row["user_email"];
       $db_user_role = $row["user_role"];
 
 
@@ -39,6 +40,7 @@ if (isset($_POST["submit"])) {
         $_SESSION["username"] = $db_username;
         $_SESSION["firstname"] = $db_user_firstname;
         $_SESSION["lastname"] = $db_user_lastname;
+        $_SESSION["email"] = $db_user_email;
         $_SESSION["user_role"] = $db_user_role;
 
         header("Location: index.php");
