@@ -3,7 +3,7 @@
 include "includes/header.php";
 include "includes/db.php";
 
-if (isset($_SESSION["username"])) {
+if (isset($_SESSION["username"]) && isset($_SESSION["user_role"])) {
   header("Location: index.php");
 }
 ?>
@@ -61,7 +61,7 @@ include "includes/navbar.php";
                 $password = $_POST['password'];
 
                 if (empty($user_firstname) || empty($user_lastname) || empty($username) || empty($password) || empty($email)) {
-                  echo "<small>Please fill all fields</small>";
+                  echo "<small>Please fill all fields</small><br>";
                 } else if ($password !== $_POST["password2"]) {
                   die("<small>Passwords do not match</small>");
                 } else {
@@ -72,13 +72,21 @@ include "includes/navbar.php";
                   $email = mysqli_real_escape_string($connection, $email);
                   $password = mysqli_real_escape_string($connection, $password);
                   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                  $user_role = 'subscriber';
 
-                  $query = "INSERT INTO users(username, user_password, user_firstname, user_lastname, user_email, user_image) ";
-                  $query .= "VALUES('{$username}','{$hashed_password}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_image}') ";
+                  $query = "INSERT INTO users(username, user_password, user_firstname, user_lastname, user_email, user_image, user_role) ";
+                  $query .= "VALUES('{$username}','{$hashed_password}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_image}','{$user_role}') ";
 
                   $result = mysqli_query($connection, $query);
                   if (!$result) {
                     die("QUERY FAILED " . mysqli_error($connection));
+                  } else {
+                    $_SESSION["username"] = $username;
+                    $_SESSION["firstname"] = $user_firstname;
+                    $_SESSION["lastname"] = $user_lastname;
+                    $_SESSION["user_role"] = $user_role;
+
+                    header("Location: index.php");
                   }
                 }
               }
