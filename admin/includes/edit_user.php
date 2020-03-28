@@ -30,8 +30,6 @@ if (isset($_GET["user_id"])) {
 if (isset($_POST["edit_user"])) {
 
   $user_id = $_GET["user_id"];
-  $user_password = $_POST['user_password'];
-  $username = $_POST['username'];
   $user_firstname = $_POST['user_firstname'];
   $user_lastname = $_POST['user_lastname'];
   $user_email = $_POST['user_email'];
@@ -52,8 +50,6 @@ if (isset($_POST["edit_user"])) {
   }
 
   $update_query = "UPDATE users SET ";
-  $update_query .= "username = '{$username}', ";
-  $update_query .= "user_password = '{$user_password}', ";
   $update_query .= "user_firstname = '{$user_firstname}', ";
   $update_query .= "user_lastname = '{$user_lastname}', ";
   $update_query .= "user_email = '{$user_email}', ";
@@ -88,11 +84,6 @@ if (isset($_POST["edit_user"])) {
   <div class="form-group">
     <label for="username">Username</label>
     <input type="text" class="form-control" name="username" value="<?php echo $username ?>">
-  </div>
-
-  <div class="form-group">
-    <label for="user_password">Password</label>
-    <input type="password" class="form-control" name="user_password" value="<?php echo $user_password ?>">
   </div>
 
   <div class="form-group">
