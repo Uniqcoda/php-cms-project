@@ -27,13 +27,13 @@ if (isset($_POST["submit"])) {
     while ($row = mysqli_fetch_assoc($result)) {
       $db_user_id = $row["user_id"];
       $db_username = $row["username"];
-      $db_user_password = $row["user_password"];
+      $db_hashed_password = $row["user_password"];
       $db_user_firstname = $row["user_firstname"];
       $db_user_lastname = $row["user_lastname"];
       $db_user_role = $row["user_role"];
 
 
-      if ($password !== $db_user_password) {
+      if (!password_verify($password, $db_hashed_password)) {
         $error_message = "User details do not match";
       } else {
         $_SESSION["username"] = $db_username;
