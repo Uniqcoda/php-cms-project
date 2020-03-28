@@ -8,6 +8,49 @@ if (isset($_SESSION["username"]) && isset($_SESSION["user_role"])) {
 }
 ?>
 
+<?php
+if (isset($_POST["submit"])) {
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+  if (empty($username) || empty($password)) {
+    $error_message = "All fields are required";
+  } else {
+
+    $username = mysqli_real_escape_string($connection, $username);
+    $password = mysqli_real_escape_string($connection, $password);
+
+    $query = "SELECT * FROM users WHERE username = '{$username}' ";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+      die("QUERY FAILED " . mysqli_error($connection));
+    }
+    while ($row = mysqli_fetch_assoc($result)) {
+      $db_user_id = $row["user_id"];
+      $db_username = $row["username"];
+      $db_user_password = $row["user_password"];
+      $db_user_firstname = $row["user_firstname"];
+      $db_user_lastname = $row["user_lastname"];
+      $db_user_role = $row["user_role"];
+
+
+      if ($password !== $db_user_password) {
+        $error_message = "User details do not match";
+      } else {
+        $_SESSION["username"] = $db_username;
+        $_SESSION["firstname"] = $db_user_firstname;
+        $_SESSION["lastname"] = $db_user_lastname;
+        $_SESSION["user_role"] = $db_user_role;
+
+        header("Location: index.php");
+      }
+    }
+  }
+} else {
+  $error_message = "";
+}
+
+?>
+
 <!-- Navigation -->
 <?php
 include "includes/navbar.php";
@@ -33,48 +76,7 @@ include "includes/navbar.php";
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" name="password" id="key" class="form-control" placeholder="Password">
               </div>
-
-              <?php
-              if (isset($_POST["submit"])) {
-                $username = $_POST["username"];
-                $password = $_POST["password"];
-                if (empty($username) || empty($password)) {
-                  echo "<small>Please fill all fields</small><br>";
-                } else {
-
-                  $username = mysqli_real_escape_string($connection, $username);
-                  $password = mysqli_real_escape_string($connection, $password);
-
-                  $query = "SELECT * FROM users WHERE username = '{$username}' ";
-                  $result = mysqli_query($connection, $query);
-                  if (!$result) {
-                    die("QUERY FAILED " . mysqli_error($connection));
-                  }
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    $db_user_id = $row["user_id"];
-                    $db_username = $row["username"];
-                    $db_user_password = $row["user_password"];
-                    $db_user_firstname = $row["user_firstname"];
-                    $db_user_lastname = $row["user_lastname"];
-                    $db_user_role = $row["user_role"];
-
-
-                    if ($password !== $db_user_password) {
-                      echo "<small>User details do not match</small><br>";
-                    } else {
-                      $_SESSION["username"] = $db_username;
-                      $_SESSION["firstname"] = $db_user_firstname;
-                      $_SESSION["lastname"] = $db_user_lastname;
-                      $_SESSION["user_role"] = $db_user_role;
-
-                      header("Location: index.php");
-                    }
-                  }
-                }
-              }
-
-              ?>
-
+              <small><?php echo $error_message ?></small>
               <input type="submit" name="submit" id="btn-login" class="btn btn-primary btn-lg btn-block" value="Login">
             </form>
 
