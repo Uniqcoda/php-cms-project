@@ -68,6 +68,7 @@ include "../functions.php";
       <div class="form-group">
         <label for="image">Post Image</label><br>
         <img width="100" src="../images/<?php echo $post_image ?>" alt="">
+        <p></p>
         <input type="file" name="image">
       </div>
 

@@ -15,7 +15,6 @@ if (isset($_GET["user_id"])) {
   while ($row = mysqli_fetch_assoc($result)) {
     $user_id = $row['user_id'];
     $username = $row['username'];
-    $user_password = $row['user_password'];
     $user_firstname = $row['user_firstname'];
     $user_lastname = $row['user_lastname'];
     $user_email = $row['user_email'];
@@ -89,6 +88,7 @@ if (isset($_POST["edit_user"])) {
   <div class="form-group">
     <label for="user_image">User Image</label><br>
     <img width="100" src="../images/<?php echo $user_image ?>" alt="">
+    <p></p>
     <input type="file" name="user_image">
   </div>
 
