@@ -32,9 +32,10 @@
           if ($_SESSION["user_role"] == 'admin') {
             echo "<li><a href='admin'>Admin</a></li>";
           }
+        } else {
+          echo "<li><a href='registration.php'>Register</a></li>";
         }
         ?>
-        <!-- <li><a href='admin'>Admin</a></li> -->
       </ul>
     </div>
     <!-- /.navbar-collapse -->
