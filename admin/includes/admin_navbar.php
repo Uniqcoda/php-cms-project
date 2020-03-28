@@ -16,7 +16,7 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo ucfirst($_SESSION['firstname']) ?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
-          <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+          <a href="../profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
         </li>
         <li class="divider"></li>
         <li>
@@ -59,9 +59,9 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
-      </li>
+      <!-- <li>
+        <a href="../profile.php"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
+      </li> -->
     </ul>
   </div>
   <!-- /.navbar-collapse -->
