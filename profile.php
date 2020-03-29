@@ -2,6 +2,8 @@
 <?php
 include "includes/header.php";
 include "includes/db.php";
+include "admin/functions.php";
+
 ?>
 
 <?php
@@ -12,9 +14,8 @@ if (isset($_SESSION["username"])) {
   $username = mysqli_real_escape_string($connection, $username);
   $query = "SELECT * FROM users WHERE username = '{$username}' ";
   $result = mysqli_query($connection, $query);
-  if (!$result) {
-    die("QUERY FAILED " . mysqli_error($connection));
-  }
+  confirmQuery($result);
+
   while ($row = mysqli_fetch_assoc($result)) {
     $user_id = $row["user_id"];
     $username = $row["username"];
@@ -46,9 +47,8 @@ if (isset($_POST["edit_profile"])) {
     $n_query = "SELECT * FROM users WHERE username = '{$username}' ";
 
     $n_result = mysqli_query($connection, $n_query);
-    if (!$n_result) {
-      die("QUERY FAILED " . mysqli_error($connection));
-    }
+    confirmQuery($result);
+
     while ($row = mysqli_fetch_assoc($n_result)) {
       $user_image = $row['user_image'];
     }

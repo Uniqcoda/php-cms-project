@@ -18,9 +18,7 @@ function addCategory()
     } else {
       $query = "INSERT INTO categories(cat_title) VALUE('{$cat_title}') ";
       $result = mysqli_query($connection, $query);
-      if (!$result) {
-        die("QUERY FAILED " . mysqli_error($connection));
-      }
+      confirmQuery($result);
     }
   }
 }

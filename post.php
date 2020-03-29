@@ -74,7 +74,6 @@ include "includes/navbar.php";
           $comment_count_query .= "WHERE post_id = $comment_post_id ";
           $result = mysqli_query($connection, $query);
           $result_comment_count_query = mysqli_query($connection, $comment_count_query);
-          confirmQuery($result);
           if (!$result || !$result_comment_count_query) {
             die("QUERY FAILED " . mysqli_error($connection));
           }

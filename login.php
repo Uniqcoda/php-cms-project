@@ -2,6 +2,8 @@
 <?php
 include "includes/header.php";
 include "includes/db.php";
+include "admin/functions.php";
+
 
 if (isset($_SESSION["username"]) && isset($_SESSION["user_role"])) {
   header("Location: index.php");
@@ -21,9 +23,8 @@ if (isset($_POST["submit"])) {
 
     $query = "SELECT * FROM users WHERE username = '{$username}' ";
     $result = mysqli_query($connection, $query);
-    if (!$result) {
-      die("QUERY FAILED " . mysqli_error($connection));
-    }
+    confirmQuery($result);
+
     while ($row = mysqli_fetch_assoc($result)) {
       $db_user_id = $row["user_id"];
       $db_username = $row["username"];

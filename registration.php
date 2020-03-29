@@ -2,6 +2,8 @@
 <?php
 include "includes/header.php";
 include "includes/db.php";
+include "admin/functions.php";
+
 
 if (isset($_SESSION["username"]) && isset($_SESSION["user_role"])) {
   header("Location: index.php");
