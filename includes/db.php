@@ -1,8 +1,6 @@
 <?php
 $connection =  mysqli_connect('localhost', 'root', 'root', 'cms');
 
-if ($connection) {
-  // echo "We are connected";
-} else {
+if (!$connection) {
   echo "Database connection error";
 }
