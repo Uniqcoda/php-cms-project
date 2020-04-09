@@ -32,6 +32,7 @@ if (isset($_POST["submit"])) {
     $username = mysqli_real_escape_string($connection, $username);
     $email = mysqli_real_escape_string($connection, $email);
     $password = mysqli_real_escape_string($connection, $password);
+    
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $user_role = 'subscriber';
 
