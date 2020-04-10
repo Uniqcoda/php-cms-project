@@ -27,7 +27,7 @@ $subscribers_count = mysqli_num_rows($subscribers_result);
       var data = google.visualization.arrayToDataTable([
         ['Data', 'Count'],
         <?php
-        $element_text = ['Active Posts', 'Draft Posts', 'Comments', 'Pending Comments', 'Users', 'Subscribers', 'Categories'];
+        $element_text = ['All Posts', 'Draft Posts', 'Comments', 'Pending Comments', 'Users', 'Subscribers', 'Categories'];
         $element_count = [$posts_count, $drafts_count, $comments_count, $unapproved_comments_count, $users_count, $subscribers_count, $categories_count];
         for ($i = 0; $i < 7; $i++) {
           echo "['$element_text[$i]', $element_count[$i]],";
