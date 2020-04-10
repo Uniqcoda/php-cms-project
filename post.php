@@ -85,7 +85,7 @@ include "includes/navbar.php";
           <h4>Leave a Comment:</h4>
           <form action="" method="post" role="form">
             <div class="form-group">
-              <textarea class="form-control" rows="3" name="comment_content" placeholder="Enter Comment"></textarea>
+              <textarea class="form-control" rows="3" name="comment_content" placeholder="Enter Comment" id="body"></textarea>
             </div>
             <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
           </form>
