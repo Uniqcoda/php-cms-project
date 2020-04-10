@@ -1,7 +1,6 @@
 <?php
 include "includes/admin_header.php";
 include "includes/db.php";
-
 ?>
 <div id="wrapper">
   <!-- Navigation -->
@@ -28,7 +27,10 @@ include "includes/db.php";
       <?php
       include "includes/admin_widget.php";
       ?>
-
+      <!-- Google chart -->
+      <?php
+      include "includes/admin_chart.php";
+      ?>
     </div>
     <!-- /.container-fluid -->
 
