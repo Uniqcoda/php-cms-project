@@ -31,7 +31,7 @@ if (isset($_POST["update_post"])) {
 
   $query = "UPDATE posts SET ";
   $query .= "post_title = '{$post_title}', ";
-  $query .= "post_category_id = '{$post_category_id}', ";
+  $query .= "post_category_id = {$post_category_id}, ";
   $query .= "post_date = now(), ";
   $query .= "post_author = '{$post_author}', ";
   $query .= "post_status = '{$post_status}', ";
@@ -71,6 +71,14 @@ if (isset($_POST["update_post"])) {
       $post_content = $row['post_content'];
       $post_date = $row['post_date'];
       $post_comment_count = $row['post_comment_count'];
+
+      // get the category title
+      $post_cat_query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
+      $post_cat_result = mysqli_query($connection, $post_cat_query);
+      confirmQuery($post_cat_result);
+      while ($row = mysqli_fetch_assoc($post_cat_result)) {
+        $post_cat_title = $row['cat_title'];
+      }
   ?>
 
       <div class="form-group">
@@ -81,16 +89,20 @@ if (isset($_POST["update_post"])) {
       <div class="form-group">
         <label for="post_category_id">Post Category</label><br>
         <select name="post_category_id" id="post_category">
+          <!-- display the post category title first before the others -->
+          <option value=<?php echo $post_category_id ?>> <?php echo $post_cat_title ?> </option>
           <?php
-          $query = "SELECT * FROM categories ";
+          $cats_query = "SELECT * FROM categories ";
 
-          $result = mysqli_query($connection, $query);
-          confirmQuery($result);
+          $cats_result = mysqli_query($connection, $cats_query);
+          confirmQuery($cats_result);
 
-          while ($row = mysqli_fetch_assoc($result)) {
+          while ($row = mysqli_fetch_assoc($cats_result)) {
             $cat_id = $row['cat_id'];
             $cat_title = $row['cat_title'];
-            echo "<option value='{$cat_id}'>$cat_title</option>";
+            if ($cat_id !== $post_category_id) {
+              echo "<option value='{$cat_id}'>$cat_title</option>";
+            }
           }
           ?>
         </select>
