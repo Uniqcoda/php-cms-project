@@ -4,6 +4,7 @@ $(document).ready(function () {
 		console.error(error);
 	});
 
+	// posts page checkbox
 	$('#selectAllBoxes').click(function (event) {
 		if (this.checked) {
 			$('.checkBoxes').each(function () {
