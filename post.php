@@ -4,6 +4,7 @@ include "includes/header.php";
 include "includes/db.php";
 include "admin/functions.php";
 
+// TODO: when viewing a post from the admin edit-post page, don't display a post that's in draft form
 ?>
 
 <!-- Navigation -->
