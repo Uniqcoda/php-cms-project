@@ -29,7 +29,7 @@ if (isset($_POST['checkBoxArray'])) {
   </div>
   <div class="col-xs-4">
     <input type="submit" name="submit" class="btn btn-success" value="Apply">
-    <a href="add_post.php" class="btn btn-primary">Add New</a>
+    <a href="posts.php?source=add_post" class="btn btn-primary">Add New</a>
   </div>
   <table class="table table-hover table-bordered">
     <thead>
@@ -51,7 +51,8 @@ if (isset($_POST['checkBoxArray'])) {
     <tbody>
       <?php
       global $connection;
-      $query = "SELECT * FROM posts ORDER BY post_date DESC ";
+      $query = "SELECT * FROM posts ";
+      // $query .= "ORDER BY post_date DESC ";
       $result = mysqli_query($connection, $query);
       while ($row = mysqli_fetch_assoc($result)) {
         $post_id = $row['post_id'];
