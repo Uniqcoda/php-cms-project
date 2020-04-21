@@ -21,6 +21,10 @@
           echo "<li><a href='profile.php'>Profile</a></li>";
           if ($_SESSION["user_role"] == 'admin') {
             echo "<li><a href='admin'>Admin</a></li>";
+            if (isset($_GET["p_id"])) {
+              $post_id = $_GET["p_id"];
+              echo "<li><a href='admin/posts.php?source=edit_post&p_id=$post_id'>Edit Post</a></li>";
+            }
           }
           echo "<li><a href='includes/logout.php'>Log Out</a></li>";
         } else {

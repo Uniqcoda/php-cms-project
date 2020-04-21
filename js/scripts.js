@@ -1,3 +1,6 @@
-ClassicEditor.create(document.querySelector('#body')).catch((error) => {
-	console.error(error);
+$(document).ready(function () {
+    // CKEditor
+	ClassicEditor.create(document.querySelector('#body')).catch((error) => {
+		console.error(error);
+	});
 });
