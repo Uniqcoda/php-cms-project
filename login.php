@@ -81,6 +81,8 @@ include "includes/navbar.php";
               </div>
               <small><?php echo $error_message ?></small>
               <input type="submit" name="submit" id="btn-login" class="btn btn-primary btn-lg btn-block" value="Login">
+              <a href="">Forgot password?</a>
+
             </form>
 
           </div>

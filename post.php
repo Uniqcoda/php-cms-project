@@ -57,7 +57,7 @@ include "includes/navbar.php";
       }
       ?>
 
-      <!-- Blog Comments -->
+      <!-- Add Blog Comments -->
       <?php
       if (isset($_SESSION["username"])) {
         if (isset($_POST["create_comment"])) {
@@ -65,20 +65,22 @@ include "includes/navbar.php";
           $comment_author = $_SESSION["firstname"] . " " . $_SESSION["lastname"];
           $comment_email = $_SESSION["email"];
           $comment_content = $_POST["comment_content"];
+          if (!empty($comment_content)) {
+            $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date ) ";
+            $query .= "VALUE ($comment_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now()) ";
 
-          $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date ) ";
-          $query .= "VALUE ($comment_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now()) ";
-
-          $comment_count_query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
-          $comment_count_query .= "WHERE post_id = $comment_post_id ";
-          $result = mysqli_query($connection, $query);
-          $result_comment_count_query = mysqli_query($connection, $comment_count_query);
-          if (!$result || !$result_comment_count_query) {
-            die("QUERY FAILED " . mysqli_error($connection));
+            $comment_count_query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+            $comment_count_query .= "WHERE post_id = $comment_post_id ";
+            $result = mysqli_query($connection, $query);
+            $result_comment_count_query = mysqli_query($connection, $comment_count_query);
+            if (!$result || !$result_comment_count_query) {
+              die("QUERY FAILED " . mysqli_error($connection));
+            }
+          } else {
+            echo "<script >alert('Comment field cannot be empty')</script>";
           }
         }
       ?>
-
         <!-- Comments Form -->
         <div class="well">
           <h4>Leave a Comment:</h4>
@@ -92,6 +94,8 @@ include "includes/navbar.php";
 
         <hr>
       <?php
+      } else {
+        echo "Login to add your comment.";
       }
       ?>
       <!--Display Comments -->
