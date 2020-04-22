@@ -18,23 +18,23 @@ include "includes/navbar.php";
     <!-- Blog Sidebar Widgets Column -->
     <?php
     include "includes/sidebar.php";
+    if (isset($_GET["author"])) {
+      $post_author = $_GET["author"];
+    }
     ?>
 
 
     <!-- Blog Entries Column -->
     <div class="col-md-8">
-      <!-- <h1 class="page-header">
-        Posts on Bootstrap
-      </h1> -->
+      <h1 class="page-header">
+        Posts by <small><?php echo $post_author ?></small>
+      </h1>
       <?php
-      if (isset($_GET["cat_id"])) {
-        $cat_id = $_GET["cat_id"];
-      }
       // display only published posts
-      $query = "SELECT * FROM posts WHERE (post_category_id = $cat_id AND post_status = 'published') ORDER BY post_date DESC";
+      $query = "SELECT * FROM posts WHERE (post_author = '$post_author' AND post_status = 'published') ORDER BY post_date DESC";
       $all_posts = mysqli_query($connection, $query);
       if (!mysqli_num_rows($all_posts)) {
-        echo "<h3>Oooppps :( No post in this category yet!</h3>";
+        echo "<h3>Oooppps :( No post by this author.</h3>";
       } else {
         while ($row = mysqli_fetch_assoc($all_posts)) {
           $post_id = $row['post_id'];
@@ -49,7 +49,7 @@ include "includes/navbar.php";
             <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
           </h2>
           <p class="lead">
-            by <a href="index.php"><?php echo $post_author ?></a>
+            by <<a href='author_posts.php?author=<?php echo $post_author; ?>'><?php echo $post_author ?></a>
           </p>
           <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date; ?></p>
           <hr>
