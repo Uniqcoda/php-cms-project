@@ -10,51 +10,38 @@ include "includes/db.php";
   include "includes/admin_navbar.php";
 
   ?>
-  <div id="page-wrapper">
+  <h3>Comments</h3>
 
-    <div class="container-fluid">
+  <?php
+  if (isset($_GET['source'])) {
+    $source = $_GET['source'];
+  } else {
+    $source = '';
+  }
 
-      <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="page-header">
-            Welcome
-            <small><?php echo ucfirst($_SESSION['firstname']) ?></small>
-          </h1>
-          <h3>Comments</h3>
+  switch ($source) {
+    case 'add_post':
+      include "includes/add_post.php";
+      break;
+    case 'edit_post':
+      include "includes/edit_post.php";
+      break;
 
-          <?php
-          if (isset($_GET['source'])) {
-            $source = $_GET['source'];
-          } else {
-            $source = '';
-          }
-
-          switch ($source) {
-            case 'add_post':
-              include "includes/add_post.php";
-              break;
-            case 'edit_post':
-              include "includes/edit_post.php";
-              break;
-
-            default:
-              include "includes/view_all_comments.php";
-              break;
-          }
+    default:
+      include "includes/view_all_comments.php";
+      break;
+  }
 
 
 
-          ?>
-        </div>
-      </div>
-      <!-- /.row -->
+  ?>
+  <!-- /.row -->
 
-    </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
 
-  </div>
-  <!-- /#page-wrapper -->
+</div>
+<!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
