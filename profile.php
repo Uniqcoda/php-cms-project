@@ -67,6 +67,7 @@ if (isset($_POST["edit_profile"])) {
   } else {
     $_SESSION["firstname"] = $user_firstname;
     $_SESSION["lastname"] = $user_lastname;
+    $_SESSION["email"] = $user_email;
   }
 }
 
@@ -85,9 +86,6 @@ include "includes/navbar.php";
         <div class="col-xs-6 col-xs-offset-3">
           <div class="form-wrap">
 
-
-
-
             <h3>Edit Profile</h3>
             <form action="" method="post" enctype="multipart/form-data">
 
@@ -102,8 +100,13 @@ include "includes/navbar.php";
               </div>
 
               <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="username" value="<?php echo $username ?>">
+              </div>
+
+              <div class="form-group">
                 <label for="user_email">Email</label>
-                <input type="email" class="form-control" name="user_email" value="<?php echo $user_email ?>">
+                <input type="email" class="form-control" name="user_email" id="user_email" value="<?php echo $user_email ?>">
               </div>
 
               <div class="form-group">
@@ -114,26 +117,11 @@ include "includes/navbar.php";
               </div>
 
               <div class="form-group">
-                <input class="btn btn-primary" type="submit" name="edit_profile" value="Update">
+                <input class="btn btn-primary btn-block" type="submit" name="edit_profile" value="Update">
               </div>
-
+              <a href="">Forgot password?</a>
 
             </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           </div>
         </div> <!-- /.col-xs-12 -->
@@ -142,7 +130,6 @@ include "includes/navbar.php";
   </section>
 
   <hr>
-
 
 
   <?php include "includes/footer.php"; ?>
